@@ -1,0 +1,76 @@
+ok
+CREATE TABLE egresos_sj (
+    id SERIAL PRIMARY KEY,
+    fecha TIMESTAMP NOT NULL,
+    monto NUMERIC NOT NULL,
+    descripcion TEXT NOT NULL,
+    tipo_pago TEXT
+);
+
+
+ok falta
+CREATE TABLE equipos_sj (
+    id SERIAL PRIMARY KEY,
+    tipo_reparacion TEXT NOT NULL,
+    marca TEXT NOT NULL,
+    modelo TEXT NOT NULL,
+    tecnico TEXT NOT NULL,
+    monto NUMERIC NOT NULL,
+    nombre_cliente TEXT NOT NULL,
+    telefono TEXT NOT NULL,
+    nro_orden TEXT NOT NULL,
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
+    estado TEXT DEFAULT 'por_reparar'
+);
+
+
+
+ok
+CREATE TABLE productos_sj (
+    id SERIAL PRIMARY KEY,
+    nombre TEXT NOT NULL,
+    codigo_barras TEXT NOT NULL UNIQUE,
+    stock INTEGER NOT NULL,
+    precio NUMERIC,
+    precio_costo NUMERIC,
+    cantidad_vendida INTEGER DEFAULT 0
+);
+
+
+
+ok
+CREATE TABLE reparaciones_sj (
+    id SERIAL PRIMARY KEY,
+    nombre_servicio TEXT NOT NULL,
+    precio NUMERIC NOT NULL,
+    fecha TIMESTAMP NOT NULL,
+    cantidad INTEGER,
+    tipo_pago TEXT,
+    dni_cliente TEXT
+);
+
+
+
+ok
+CREATE TABLE ventas_sj (  
+    id SERIAL PRIMARY KEY,
+    producto_id INTEGER REFERENCES productos(id),
+    cantidad INTEGER NOT NULL,
+    fecha TIMESTAMP NOT NULL,
+    nombre_manual TEXT,
+    precio_manual NUMERIC,
+    tipo_pago TEXT,
+    dni_cliente TEXT,
+    total NUMERIC
+);
+
+
+ id | username |   password    | role  | mp_subscription_id | mp_payer_email
+----+----------+---------------+-------+--------------------+----------------
+  1 | Nahun    | Rocko345      | admin |                    |
+  2 | usuario1 | contraseña123 | admin |                    |
+  3 | nahun    | Rocko345      | admin |                    |
+  4 | ale      | alejuli       | admin |                    |
+  5 | juli     | alejuli       | admin |                    |
+  6 | pablo    | servicell     | admin |                    |
