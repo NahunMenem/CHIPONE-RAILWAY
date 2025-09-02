@@ -1,6 +1,10 @@
 // tailwind.config.js
 module.exports = {
   darkMode: 'class',
+  content: [
+    "./templates/**/*.html",  // 👈 busca en todas tus plantillas Flask
+    "./static/**/*.js"        // 👈 busca también en tus scripts JS
+  ],
   theme: {
     extend: {
       colors: {
