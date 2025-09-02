@@ -54,7 +54,7 @@
     
         <!-- Vista Desktop -->
         <div class="hidden md:block bg-greige p-6 rounded-lg shadow-lg overflow-x-auto">
-            <table class="min-w-full bg-stucco rounded-lg">
+            <table class="min-w-full rounded-lg overflow-hidden border border-greige">
                 <thead>
                     <tr class="bg-walnut text-stucco">
                         <th class="px-4 py-2 text-left">ID</th>
@@ -67,12 +67,12 @@
                 </thead>
                 <tbody>
                     {% for egreso in egresos %}
-                    <tr class="border-b border-greige hover:bg-ash transition duration-200">
-                        <td class="px-4 py-2">{{ egreso.id }}</td>
-                        <td class="px-4 py-2">{{ egreso.fecha }}</td>
-                        <td class="px-4 py-2">${{ egreso.monto }}</td>
-                        <td class="px-4 py-2">{{ egreso.descripcion }}</td>
-                        <td class="px-4 py-2">{{ egreso.tipo_pago }}</td>
+                    <tr class="odd:bg-stucco even:bg-ash hover:bg-greige border-b border-greige transition duration-200">
+                        <td class="px-4 py-2 text-onyx">{{ egreso.id }}</td>
+                        <td class="px-4 py-2 text-onyx">{{ egreso.fecha }}</td>
+                        <td class="px-4 py-2 text-onyx">${{ egreso.monto }}</td>
+                        <td class="px-4 py-2 text-onyx">{{ egreso.descripcion }}</td>
+                        <td class="px-4 py-2 text-onyx">{{ egreso.tipo_pago }}</td>
                         <td class="px-4 py-2">
                             <form method="POST" class="inline">
                                 <input type="hidden" name="egreso_id" value="{{ egreso.id }}">
