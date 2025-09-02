@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Chiphone</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/icono.ico') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    window.onload = () => { lucide.createIcons(); };
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            dark: {
+              800: '#1e293b',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+  <!-- Overlay y botón de menú -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+  <button id="sidebarToggle" class="md:hidden fixed top-3 left-3 z-50 p-2 rounded-lg bg-primary-600 text-white shadow-lg">
+    <i data-lucide="menu"></i>
+  </button>
+
+  <div class="grid grid-cols-1 md:grid-cols-[250px_1fr] min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="bg-gray-800 text-white border-r border-gray-700 p-4 fixed md:static inset-y-0 left-0 w-64 transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-50">
+      <div class="flex flex-col h-full">
+        <div class="flex items-center justify-center mb-6">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Servicell" class="h-32 mx-auto">
+        </div>
+        <nav class="space-y-2">
+          <a href="{{ url_for('tienda') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'tienda' else '' }}">
+            <i data-lucide="shopping-bag" class="w-5 h-5 mr-2"></i> Tienda
+          </a>
+        
+          {% if session.get('usuario') or session.get('role') %}
+            <a href="{{ url_for('agregar_stock') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'agregar_stock' else '' }}">
+              <i data-lucide="package" class="w-5 h-5 mr-2"></i> Agregar Stock
+            </a>
+            <a href="{{ url_for('registrar_venta') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'registrar_venta' else '' }}">
+              <i data-lucide="dollar-sign" class="w-5 h-5 mr-2"></i> Registrar Venta
+            </a>
+            <a href="{{ url_for('ultimas_ventas') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'ultimas_ventas' else '' }}">
+              <i data-lucide="history" class="w-5 h-5 mr-2"></i> Transacciones
+            </a>
+            <a href="{{ url_for('egresos') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'egresos' else '' }}">
+              <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> Egresos
+            </a>
+            {% if session.get('role') == 'admin' %}
+            <a href="{{ url_for('dashboard') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'dashboard' else '' }}">
+              <i data-lucide="layout-dashboard" class="w-5 h-5 mr-2"></i> Dashboard
+            </a>
+            {% endif %}
+            <a href="{{ url_for('productos_por_agotarse') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'productos_por_agotarse' else '' }}">
+              <i data-lucide="alert-triangle" class="w-5 h-5 mr-2"></i> Productos por Agotarse
+            </a>
+            {% if session.get('role') == 'admin' %}
+            <a href="{{ url_for('caja') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'caja' else '' }}">
+              <i data-lucide="calculator" class="w-5 h-5 mr-2"></i> Caja
+            </a>
+            {% endif %}
+            <a href="{{ url_for('reparaciones') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'reparaciones' else '' }}">
+              <i data-lucide="wrench" class="w-5 h-5 mr-2"></i> Reparaciones
+            </a>
+            <a href="{{ url_for('mercaderia_fallada') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'mercaderia_fallada' else '' }}">
+              <i data-lucide="x-circle" class="w-5 h-5 mr-2"></i> Mercadería Fallada
+            </a>
+            <a href="{{ url_for('productos_mas_vendidos') }}" class="flex items-center p-2 rounded hover:bg-gray-700 {{ 'bg-gray-700' if request.endpoint == 'productos_mas_vendidos' else '' }}">
+              <i data-lucide="star" class="w-5 h-5 mr-2"></i> Productos Más Vendidos
+            </a>
+            <a href="{{ url_for('logout') }}" class="flex items-center p-2 rounded bg-red-600 hover:bg-red-700">
+              <i data-lucide="log-out" class="w-5 h-5 mr-2"></i> Cerrar Sesión
+            </a>
+          {% endif %}
+        </nav>
+        
+        <footer class="mt-auto text-center text-xs text-gray-400 pt-6">v1.0.0</footer>
+      </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="p-4 md:p-6 lg:p-8">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="mb-3 p-3 rounded-lg {{ 'bg-green-100 text-green-800' if category == 'success' else 'bg-red-100 text-red-800' }} text-sm">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+      sidebarOverlay.classList.toggle('hidden');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      sidebarOverlay.classList.add('hidden');
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
