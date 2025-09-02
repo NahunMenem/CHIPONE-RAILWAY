@@ -1128,14 +1128,15 @@ def agregar_stock():
                 SELECT id, nombre, codigo_barras, stock, precio, precio_costo, foto_url,
                        num, color, bateria, precio_revendedor, condicion
                 FROM productos_sj
-                WHERE nombre ILIKE %s OR codigo_barras ILIKE %s
-            ''', (f'%{busqueda}%', f'%{busqueda}%'))
+                WHERE nombre ILIKE %s OR codigo_barras ILIKE %s OR num ILIKE %s
+            ''', (f'%{busqueda}%', f'%{busqueda}%', f'%{busqueda}%'))
         else:
             cursor.execute('''
                 SELECT id, nombre, codigo_barras, stock, precio, precio_costo, foto_url,
                        num, color, bateria, precio_revendedor, condicion
                 FROM productos_sj
             ''')
+
 
         productos = cursor.fetchall()
         return render_template('agregar_stock.html', productos=productos, busqueda=busqueda, categorias=categorias)
