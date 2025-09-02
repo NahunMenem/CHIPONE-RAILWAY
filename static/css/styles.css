@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =======================
+   🎨 Sistema de estilos
+   ======================= */
+
+/* Botones */
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-6 py-2 bg-walnut hover:bg-greige 
+         text-stucco font-semibold rounded-lg transition duration-300;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center gap-2 px-6 py-2 bg-ash hover:bg-greige 
+         text-onyx font-semibold rounded-lg transition duration-300;
+}
+
+.btn-danger {
+  @apply inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 
+         text-stucco font-semibold rounded-lg text-sm transition duration-300;
+}
+
+/* Inputs */
+.input-primary {
+  @apply w-full p-2 bg-stucco border border-greige rounded-lg 
+         text-onyx placeholder-ash focus:outline-none focus:ring-2 focus:ring-walnut;
+}
+
+/* Cards */
+.card {
+  @apply bg-greige text-onyx p-6 rounded-lg shadow-lg;
+}
+
+/* Tablas */
+.table {
+  @apply min-w-full rounded-lg overflow-hidden border border-greige;
+}
+
+.table thead {
+  @apply bg-walnut text-stucco;
+}
+
+.table thead th {
+  @apply px-4 py-2 text-left font-semibold;
+}
+
+.table tbody tr {
+  @apply odd:bg-stucco even:bg-ash hover:bg-greige border-b border-greige transition duration-200;
+}
+
+.table tbody td {
+  @apply px-4 py-2 text-onyx;
+}
