@@ -1,63 +1,63 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="p-6 bg-gray-900 text-white min-h-screen">
+<div class="p-6 bg-gray-900 text-stucco min-h-screen">
     <h1 class="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2">
         <i data-lucide="plus-square"></i>
         Agregar Stock
     </h1>
 
 
-    <div class="bg-gray-700 p-4 rounded-lg mb-6">
-        <h3 class="text-white text-lg font-semibold mb-2">Gestionar Categorías</h3>
+    <div class="bg-ash p-4 rounded-lg mb-6">
+        <h3 class="text-stucco text-lg font-semibold mb-2">Gestionar Categorías</h3>
         <form method="POST" class="flex items-center gap-4 mb-2">
-            <input type="text" name="nueva_categoria" placeholder="Nueva categoría" class="p-2 rounded bg-gray-800 border border-gray-600 text-white">
-            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded font-semibold">Agregar</button>
+            <input type="text" name="nueva_categoria" placeholder="Nueva categoría" class="p-2 rounded bg-onyx border border-greige text-stucco">
+            <button type="submit" class="bg-green-600 text-stucco px-4 py-2 rounded font-semibold">Agregar</button>
         </form>
 
         <form method="POST" class="flex items-center gap-4">
-            <select name="eliminar_categoria" class="p-2 rounded bg-gray-800 border border-gray-600 text-white">
+            <select name="eliminar_categoria" class="p-2 rounded bg-onyx border border-greige text-stucco">
                 {% for c in categorias %}
                     <option value="{{ c }}">{{ c }}</option>
                 {% endfor %}
             </select>
-            <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded font-semibold">Eliminar</button>
+            <button type="submit" class="bg-red-600 text-stucco px-4 py-2 rounded font-semibold">Eliminar</button>
         </form>
     </div>
 
         <!-- Agregar nuevo producto -->
-    <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+    <div class="bg-onyx p-6 rounded-lg shadow-lg mb-8">
         <h2 class="text-2xl font-semibold mb-4">Agregar Nuevo Producto</h2>
         <form method="POST" enctype="multipart/form-data">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label for="nombre" class="block text-gray-300 mb-2">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                    <input type="text" id="nombre" name="nombre" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                 </div>
                 <div>
                     <label for="codigo_barras" class="block text-gray-300 mb-2">Código de Barras:</label>
-                    <input type="text" id="codigo_barras" name="codigo_barras" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                    <input type="text" id="codigo_barras" name="codigo_barras" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                 </div>
                 <div>
                     <label for="num" class="block text-gray-300 mb-2">Núm:</label>
-                    <input type="text" id="num" name="num" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                    <input type="text" id="num" name="num" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                 </div>
                 <div>
                     <label for="color" class="block text-gray-300 mb-2">Color:</label>
-                    <input type="text" id="color" name="color" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                    <input type="text" id="color" name="color" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                 </div>
                 <div>
                     <label for="bateria" class="block text-gray-300 mb-2">Batería:</label>
-                    <input type="text" id="bateria" name="bateria" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                    <input type="text" id="bateria" name="bateria" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                 </div>
                 <div>
                     <label for="precio_revendedor" class="block text-gray-300 mb-2">Precio Revendedor:</label>
-                    <input type="number" step="0.01" id="precio_revendedor" name="precio_revendedor" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                    <input type="number" step="0.01" id="precio_revendedor" name="precio_revendedor" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                 </div>
                 <div>
                     <label for="condicion" class="block text-gray-300 mb-2">Condición:</label>
-                    <select id="condicion" name="condicion" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                    <select id="condicion" name="condicion" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                         <option value="">Seleccionar</option>
                         <option value="sellado">Sellado</option>
                         <option value="usado">Usado</option>
@@ -66,7 +66,7 @@
                 </div>
                 <div>
                     <label for="categoria" class="block text-gray-300 mb-2">Categoría:</label>
-                    <select id="categoria" name="categoria" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                    <select id="categoria" name="categoria" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                     <option value="">Seleccionar</option>
                     {% for c in categorias %}
                         <option value="{{ c }}">{{ c }}</option>
@@ -75,23 +75,23 @@
                 </div>
                 <div>
                     <label for="stock" class="block text-gray-300 mb-2">Stock:</label>
-                    <input type="number" id="stock" name="stock" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                    <input type="number" id="stock" name="stock" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                 </div>
                 <div>
                     <label for="foto" class="block text-gray-300 mb-2">Foto del Producto:</label>
-                    <input type="file" id="foto" name="foto" accept="image/*" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                    <input type="file" id="foto" name="foto" accept="image/*" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                 </div>
                 <div>
                     <label for="precio" class="block text-gray-300 mb-2">Precio de Venta:</label>
-                    <input type="number" step="0.01" id="precio" name="precio" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                    <input type="number" step="0.01" id="precio" name="precio" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                 </div>
                 <div class="md:col-span-2">
                     <label for="precio_costo" class="block text-gray-300 mb-2">Precio de Costo:</label>
-                    <input type="number" step="0.01" id="precio_costo" name="precio_costo" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                    <input type="number" step="0.01" id="precio_costo" name="precio_costo" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                 </div>
             </div>
 
-            <button type="submit" name="agregar" class="mt-4 inline-flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg">
+            <button type="submit" name="agregar" class="mt-4 inline-flex items-center gap-2 px-6 py-2 bg-walnut hover:bg-greige text-stucco font-semibold rounded-lg">
                 <i data-lucide="plus-circle"></i> Agregar Producto
             </button>
         </form>
@@ -99,22 +99,22 @@
 
 
     <!-- Buscar -->
-    <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+    <div class="bg-onyx p-6 rounded-lg shadow-lg mb-8">
         <h2 class="text-2xl font-semibold mb-4">Buscar Producto</h2>
         <form method="GET" action="{{ url_for('agregar_stock') }}">
-            <input type="text" name="busqueda" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" placeholder="Buscar por nombre o código de barras..." value="{{ busqueda }}">
-            <button type="submit" class="mt-2 inline-flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg">
+            <input type="text" name="busqueda" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" placeholder="Buscar por nombre o código de barras..." value="{{ busqueda }}">
+            <button type="submit" class="mt-2 inline-flex items-center gap-2 px-6 py-2 bg-walnut hover:bg-greige text-stucco font-semibold rounded-lg">
                 <i data-lucide="search"></i> Buscar
             </button>
         </form>
     </div>
 
 
-    <a href="{{ url_for('exportar_stock') }}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 flex items-center gap-2">
+    <a href="{{ url_for('exportar_stock') }}" class="bg-green-600 text-stucco px-4 py-2 rounded hover:bg-green-700 flex items-center gap-2">
             <i data-lucide="file-down"></i> Exportar a Excel
     </a>
     <!-- Tabla productos -->
-    <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+    <div class="bg-onyx p-6 rounded-lg shadow-lg mb-8">
         <h2 class="text-2xl font-semibold mb-4">Productos Existentes</h2>
 
     
@@ -122,7 +122,7 @@
         <!-- Vista para escritorio -->
         <div class="hidden md:block overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-600 text-sm md:text-base text-left">
-                <thead class="bg-gray-700 text-gray-100">
+                <thead class="bg-ash text-gray-100">
                     <tr>
                         <th class="px-4 py-3 font-semibold">ID</th>
                         <th class="px-4 py-3 font-semibold">Nombre</th>
@@ -140,9 +140,9 @@
                         <th class="px-4 py-3 font-semibold text-right">Acciones</th>
                     </tr>
                 </thead>
-                <tbody class="bg-gray-800 divide-y divide-gray-700">
+                <tbody class="bg-onyx divide-y divide-gray-700">
                     {% for producto in productos %}
-                    <tr class="hover:bg-gray-700 transition-colors duration-200">
+                    <tr class="hover:bg-ash transition-colors duration-200">
                         <td class="px-4 py-2">{{ producto.id }}</td>
                         <td class="px-4 py-2">{{ producto.nombre }}</td>
                         <td class="px-4 py-2">{{ producto.codigo_barras }}</td>
@@ -165,12 +165,12 @@
                         <td class="px-4 py-2 text-right">
                             <div class="flex justify-end flex-wrap gap-2">
                                 {% if session.get('role') == 'admin' %}
-                                <button type="button" class="inline-flex items-center gap-1 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white rounded-lg text-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ producto.id }}">
+                                <button type="button" class="inline-flex items-center gap-1 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-stucco rounded-lg text-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ producto.id }}">
                                     <i data-lucide="edit" class="w-4 h-4"></i> Editar
                                 </button>
                                 <form method="POST" onsubmit="return confirmarEliminacion()">
                                     <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                                    <button type="submit" name="eliminar" class="inline-flex items-center gap-1 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-sm">
+                                    <button type="submit" name="eliminar" class="inline-flex items-center gap-1 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-stucco rounded-lg text-sm">
                                         <i data-lucide="trash-2" class="w-4 h-4"></i> Eliminar
                                     </button>
                                 </form>
@@ -178,8 +178,8 @@
                                 {% if session.get('role') == 'user' %}
                                 <form method="POST" class="inline-flex items-center gap-2">
                                     <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                                    <input type="number" name="cantidad" class="w-16 p-1 bg-gray-700 border border-gray-600 rounded-lg text-white" min="1" required>
-                                    <button type="submit" name="agregar_stock" class="inline-flex items-center gap-1 px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm">
+                                    <input type="number" name="cantidad" class="w-16 p-1 bg-ash border border-greige rounded-lg text-stucco" min="1" required>
+                                    <button type="submit" name="agregar_stock" class="inline-flex items-center gap-1 px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-stucco rounded-lg text-sm">
                                         <i data-lucide="plus" class="w-4 h-4"></i> Stock
                                     </button>
                                 </form>
@@ -196,7 +196,7 @@
         <!-- Vista para móvil -->
         <div class="block md:hidden space-y-4">
             {% for producto in productos %}
-            <div class="bg-gray-700 rounded-lg p-4 text-white shadow-md">
+            <div class="bg-ash rounded-lg p-4 text-stucco shadow-md">
                 <p><span class="font-semibold">ID:</span> {{ producto.id }}</p>
                 <p><span class="font-semibold">Nombre:</span> {{ producto.nombre }}</p>
                 <p><span class="font-semibold">Código:</span> {{ producto.codigo_barras }}</p>
@@ -207,12 +207,12 @@
                 {% endif %}
                 <div class="mt-3 flex flex-wrap gap-2 justify-end">
                     {% if session.get('role') == 'admin' %}
-                    <button type="button" class="inline-flex items-center gap-1 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white rounded-lg text-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ producto.id }}">
+                    <button type="button" class="inline-flex items-center gap-1 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-stucco rounded-lg text-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ producto.id }}">
                         <i data-lucide="edit" class="w-4 h-4"></i> Editar
                     </button>
                     <form method="POST" onsubmit="return confirmarEliminacion()">
                         <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                        <button type="submit" name="eliminar" class="inline-flex items-center gap-1 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-sm">
+                        <button type="submit" name="eliminar" class="inline-flex items-center gap-1 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-stucco rounded-lg text-sm">
                             <i data-lucide="trash-2" class="w-4 h-4"></i> Eliminar
                         </button>
                     </form>
@@ -220,8 +220,8 @@
                     {% if session.get('role') == 'user' %}
                     <form method="POST" class="inline-flex items-center gap-2 w-full">
                         <input type="hidden" name="producto_id" value="{{ producto.id }}">
-                        <input type="number" name="cantidad" class="flex-1 p-1 bg-gray-800 border border-gray-600 rounded-lg text-white" min="1" required>
-                        <button type="submit" name="agregar_stock" class="inline-flex items-center gap-1 px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-sm">
+                        <input type="number" name="cantidad" class="flex-1 p-1 bg-onyx border border-greige rounded-lg text-stucco" min="1" required>
+                        <button type="submit" name="agregar_stock" class="inline-flex items-center gap-1 px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-stucco rounded-lg text-sm">
                             <i data-lucide="plus" class="w-4 h-4"></i> Stock
                         </button>
                     </form>
@@ -235,7 +235,7 @@
 
     <!-- Botón volver -->
     <div class="mt-8 text-center">
-        <a href="{{ url_for('index') }}" class="inline-flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg transition duration-300">
+        <a href="{{ url_for('index') }}" class="inline-flex items-center gap-2 px-6 py-2 bg-walnut hover:bg-greige text-stucco font-semibold rounded-lg transition duration-300">
             <i data-lucide="arrow-left"></i> Volver al Inicio
         </a>
     </div>
@@ -245,7 +245,7 @@
 {% for producto in productos %}
 <div class="modal fade" id="editarModal{{ producto.id }}" tabindex="-1" aria-labelledby="editarModalLabel{{ producto.id }}" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content bg-gray-800 text-white">
+        <div class="modal-content bg-onyx text-stucco">
             <div class="modal-header">
                 <h5 class="modal-title text-xl font-semibold" id="editarModalLabel{{ producto.id }}">Editar Producto</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -256,37 +256,37 @@
 
                     <div class="mb-4">
                         <label for="nombre{{ producto.id }}" class="block text-gray-300 mb-2">Nombre:</label>
-                        <input type="text" id="nombre{{ producto.id }}" name="nombre" value="{{ producto.nombre }}" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                        <input type="text" id="nombre{{ producto.id }}" name="nombre" value="{{ producto.nombre }}" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                     </div>
 
                     <div class="mb-4">
                         <label for="codigo_barras{{ producto.id }}" class="block text-gray-300 mb-2">Código de Barras:</label>
-                        <input type="text" id="codigo_barras{{ producto.id }}" name="codigo_barras" value="{{ producto.codigo_barras }}" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                        <input type="text" id="codigo_barras{{ producto.id }}" name="codigo_barras" value="{{ producto.codigo_barras }}" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                     </div>
 
                     <div class="mb-4">
                         <label for="num{{ producto.id }}" class="block text-gray-300 mb-2">Núm:</label>
-                        <input type="text" id="num{{ producto.id }}" name="num" value="{{ producto.num or '' }}" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                        <input type="text" id="num{{ producto.id }}" name="num" value="{{ producto.num or '' }}" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                     </div>
 
                     <div class="mb-4">
                         <label for="color{{ producto.id }}" class="block text-gray-300 mb-2">Color:</label>
-                        <input type="text" id="color{{ producto.id }}" name="color" value="{{ producto.color or '' }}" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                        <input type="text" id="color{{ producto.id }}" name="color" value="{{ producto.color or '' }}" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                     </div>
 
                     <div class="mb-4">
                         <label for="bateria{{ producto.id }}" class="block text-gray-300 mb-2">Batería:</label>
-                        <input type="text" id="bateria{{ producto.id }}" name="bateria" value="{{ producto.bateria or '' }}" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                        <input type="text" id="bateria{{ producto.id }}" name="bateria" value="{{ producto.bateria or '' }}" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                     </div>
 
                     <div class="mb-4">
                         <label for="precio_revendedor{{ producto.id }}" class="block text-gray-300 mb-2">Precio Revendedor:</label>
-                        <input type="number" step="0.01" id="precio_revendedor{{ producto.id }}" name="precio_revendedor" value="{{ producto.precio_revendedor or '' }}" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                        <input type="number" step="0.01" id="precio_revendedor{{ producto.id }}" name="precio_revendedor" value="{{ producto.precio_revendedor or '' }}" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                     </div>
 
                     <div class="mb-4">
                         <label for="condicion{{ producto.id }}" class="block text-gray-300 mb-2">Condición:</label>
-                        <select id="condicion{{ producto.id }}" name="condicion" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                        <select id="condicion{{ producto.id }}" name="condicion" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                             <option value="">Seleccionar</option>
                             <option value="sellado" {% if producto.condicion == 'sellado' %}selected{% endif %}>Sellado</option>
                             <option value="usado" {% if producto.condicion == 'usado' %}selected{% endif %}>Usado</option>
@@ -296,27 +296,27 @@
 
                     <div class="mb-4">
                         <label for="stock{{ producto.id }}" class="block text-gray-300 mb-2">Stock:</label>
-                        <input type="number" id="stock{{ producto.id }}" name="stock" value="{{ producto.stock }}" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                        <input type="number" id="stock{{ producto.id }}" name="stock" value="{{ producto.stock }}" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                     </div>
 
                     <div class="mb-4">
                         <label for="precio{{ producto.id }}" class="block text-gray-300 mb-2">Precio de Venta:</label>
-                        <input type="number" step="0.01" id="precio{{ producto.id }}" name="precio" value="{{ producto.precio }}" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                        <input type="number" step="0.01" id="precio{{ producto.id }}" name="precio" value="{{ producto.precio }}" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                     </div>
 
                     <div class="mb-4">
                         <label for="precio_costo{{ producto.id }}" class="block text-gray-300 mb-2">Precio de Costo:</label>
-                        <input type="number" step="0.01" id="precio_costo{{ producto.id }}" name="precio_costo" value="{{ producto.precio_costo }}" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                        <input type="number" step="0.01" id="precio_costo{{ producto.id }}" name="precio_costo" value="{{ producto.precio_costo }}" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                     </div>
 
                     <div class="mb-4">
                         <label for="foto{{ producto.id }}" class="block text-gray-300 mb-2">Foto del Producto (opcional):</label>
-                        <input type="file" id="foto{{ producto.id }}" name="foto" accept="image/*" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white">
+                        <input type="file" id="foto{{ producto.id }}" name="foto" accept="image/*" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco">
                     </div>
 
                     <div class="mb-4">
                         <label for="categoria{{ producto.id }}" class="block text-gray-300 mb-2">Categoría:</label>
-                        <select id="categoria{{ producto.id }}" name="categoria" class="w-full p-2 bg-gray-700 border border-gray-600 rounded-lg text-white" required>
+                        <select id="categoria{{ producto.id }}" name="categoria" class="w-full p-2 bg-ash border border-greige rounded-lg text-stucco" required>
                             <option value="">Seleccionar</option>
                             {% for c in categorias %}
                                 <option value="{{ c }}" {% if producto.categoria == c %}selected{% endif %}>{{ c }}</option>
@@ -324,7 +324,7 @@
                         </select>
                     </div>
 
-                    <button type="submit" name="editar" class="inline-flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg">
+                    <button type="submit" name="editar" class="inline-flex items-center gap-2 px-6 py-2 bg-walnut hover:bg-greige text-stucco font-semibold rounded-lg">
                         <i data-lucide="save"></i> Guardar Cambios
                     </button>
                 </form>

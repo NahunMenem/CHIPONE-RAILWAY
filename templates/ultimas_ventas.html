@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="p-6 bg-gray-900 text-white min-h-screen">
+<div class="p-6 bg-gray-900 text-stucco min-h-screen">
     <h1 class="text-3xl font-bold text-center mb-8 flex items-center justify-center gap-2">
         <i data-lucide="file-bar-chart"></i>
         Transacciones del Día ({{ fecha_actual }})
@@ -10,25 +10,25 @@
     {% if session.get('role') == 'admin' %}
     <div class="mb-8">
         <h2 class="text-2xl font-semibold mb-4">Filtrar por Fecha</h2>
-        <form action="{{ url_for('ultimas_ventas') }}" method="get" class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <form action="{{ url_for('ultimas_ventas') }}" method="get" class="bg-onyx p-6 rounded-lg shadow-lg">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
                     <label for="fecha_desde" class="block text-sm font-medium mb-2">Desde:</label>
-                    <input type="date" id="fecha_desde" name="fecha_desde" value="{{ fecha_desde }}" class="w-full p-2 rounded bg-gray-700 text-white">
+                    <input type="date" id="fecha_desde" name="fecha_desde" value="{{ fecha_desde }}" class="w-full p-2 rounded bg-ash text-stucco">
                 </div>
                 <div>
                     <label for="fecha_hasta" class="block text-sm font-medium mb-2">Hasta:</label>
-                    <input type="date" id="fecha_hasta" name="fecha_hasta" value="{{ fecha_hasta }}" class="w-full p-2 rounded bg-gray-700 text-white">
+                    <input type="date" id="fecha_hasta" name="fecha_hasta" value="{{ fecha_hasta }}" class="w-full p-2 rounded bg-ash text-stucco">
                 </div>
                 <div class="flex items-end">
-                    <button type="submit" class="inline-flex items-center justify-center w-full gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg transition duration-300">
+                    <button type="submit" class="inline-flex items-center justify-center w-full gap-2 px-4 py-2 bg-walnut hover:bg-greige text-stucco font-semibold rounded-lg transition duration-300">
                         <i data-lucide="filter"></i>
                         Filtrar
                     </button>
                 </div>
                 <div class="flex items-end">
                     <a href="{{ url_for('ultimas_ventas', fecha_desde=fecha_desde, fecha_hasta=fecha_hasta, exportar=True) }}" 
-                       class="inline-flex items-center justify-center w-full gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg transition duration-300">
+                       class="inline-flex items-center justify-center w-full gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-stucco font-semibold rounded-lg transition duration-300">
                         <i data-lucide="file-down"></i>
                         Exportar Excel
                     </a>
@@ -41,13 +41,13 @@
 
     <!-- VENTAS -->
 <div class="mb-12">
-    <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+    <h2 class="text-2xl font-bold text-stucco mb-4 flex items-center gap-2">
         <i data-lucide="shopping-cart"></i> Ventas
     </h2>
 
     <!-- Vista Desktop -->
-    <div class="hidden md:block bg-gray-800 p-6 rounded-lg shadow-lg overflow-x-auto">
-        <table class="min-w-full bg-gray-700 rounded-lg">
+    <div class="hidden md:block bg-onyx p-6 rounded-lg shadow-lg overflow-x-auto">
+        <table class="min-w-full bg-ash rounded-lg">
             <thead>
                 <tr class="bg-gray-600 text-gray-100">
                     <th class="px-4 py-2 text-left">Producto</th>
@@ -64,7 +64,7 @@
             </thead>
             <tbody>
                 {% for venta in ventas %}
-                <tr class="border-b border-gray-600 hover:bg-gray-650 transition duration-200">
+                <tr class="border-b border-greige hover:bg-gray-650 transition duration-200">
                     <td class="px-4 py-2">{{ venta.nombre_producto }}</td>
                     <td class="px-4 py-2">{{ venta.cantidad }}</td>
                     <td class="px-4 py-2">{{ venta.num or '-' }}</td>
@@ -76,7 +76,7 @@
                     <td class="px-4 py-2">{{ venta.dni_cliente or '' }}</td>
                     <td class="px-4 py-2">
                         {% if session.get('role') == 'admin' %}
-                        <button onclick="anularVenta({{ venta.venta_id }})" class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-sm">
+                        <button onclick="anularVenta({{ venta.venta_id }})" class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-stucco rounded-lg text-sm">
                             <i data-lucide="x" class="w-4 h-4"></i> Anular
                         </button>
                         {% endif %}
@@ -94,7 +94,7 @@
     <!-- Vista Mobile -->
     <div class="block md:hidden space-y-4">
         {% for venta in ventas %}
-        <div class="bg-gray-700 rounded-lg p-4 text-white shadow-md">
+        <div class="bg-ash rounded-lg p-4 text-stucco shadow-md">
             <p><strong>Producto:</strong> {{ venta.nombre_producto }}</p>
             <p><strong>Cantidad:</strong> {{ venta.cantidad }}</p>
             <p><strong>Precio Unitario:</strong> ${{ venta.precio_unitario }}</p>
@@ -104,7 +104,7 @@
             <p><strong>DNI Cliente:</strong> {{ venta.dni_cliente or '' }}</p>
             {% if session.get('role') == 'admin' %}
             <div class="mt-3">
-                <button onclick="anularVenta({{ venta.venta_id }})" class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-sm">
+                <button onclick="anularVenta({{ venta.venta_id }})" class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-stucco rounded-lg text-sm">
                     <i data-lucide="x" class="w-4 h-4"></i> Anular
                 </button>
             </div>
@@ -118,13 +118,13 @@
 
 <!-- REPARACIONES -->
 <div class="mb-12">
-    <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+    <h2 class="text-2xl font-bold text-stucco mb-4 flex items-center gap-2">
         <i data-lucide="wrench"></i> Reparaciones
     </h2>
 
     <!-- Vista Desktop -->
-    <div class="hidden md:block bg-gray-800 p-6 rounded-lg shadow-lg overflow-x-auto">
-        <table class="min-w-full bg-gray-700 rounded-lg">
+    <div class="hidden md:block bg-onyx p-6 rounded-lg shadow-lg overflow-x-auto">
+        <table class="min-w-full bg-ash rounded-lg">
             <thead>
                 <tr class="bg-gray-600 text-gray-100">
                     <th class="px-4 py-2 text-left">Servicio</th>
@@ -138,7 +138,7 @@
             </thead>
             <tbody>
                 {% for reparacion in reparaciones %}
-                <tr class="border-b border-gray-600 hover:bg-gray-650 transition duration-200">
+                <tr class="border-b border-greige hover:bg-gray-650 transition duration-200">
                     <td class="px-4 py-2">{{ reparacion.nombre_servicio }}</td>
                     <td class="px-4 py-2">{{ reparacion.cantidad }}</td>
                     <td class="px-4 py-2">${{ reparacion.precio_unitario }}</td>
@@ -147,7 +147,7 @@
                     <td class="px-4 py-2">{{ reparacion.tipo_pago }}</td>
                     <td class="px-4 py-2">
                         {% if session.get('role') == 'admin' %}
-                        <button onclick="anularReparacion({{ reparacion.reparacion_id }})" class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-sm">
+                        <button onclick="anularReparacion({{ reparacion.reparacion_id }})" class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-stucco rounded-lg text-sm">
                             <i data-lucide="x" class="w-4 h-4"></i> Anular
                         </button>
                         {% endif %}
@@ -165,7 +165,7 @@
     <!-- Vista Mobile -->
     <div class="block md:hidden space-y-4">
         {% for reparacion in reparaciones %}
-        <div class="bg-gray-700 rounded-lg p-4 text-white shadow-md">
+        <div class="bg-ash rounded-lg p-4 text-stucco shadow-md">
             <p><strong>Servicio:</strong> {{ reparacion.nombre_servicio }}</p>
             <p><strong>Cantidad:</strong> {{ reparacion.cantidad }}</p>
             <p><strong>Precio Unitario:</strong> ${{ reparacion.precio_unitario }}</p>
@@ -174,7 +174,7 @@
             <p><strong>Tipo de Pago:</strong> {{ reparacion.tipo_pago }}</p>
             {% if session.get('role') == 'admin' %}
             <div class="mt-3">
-                <button onclick="anularReparacion({{ reparacion.reparacion_id }})" class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg text-sm">
+                <button onclick="anularReparacion({{ reparacion.reparacion_id }})" class="inline-flex items-center gap-2 px-4 py-2 bg-rose-600 hover:bg-rose-500 text-stucco rounded-lg text-sm">
                     <i data-lucide="x" class="w-4 h-4"></i> Anular
                 </button>
             </div>
@@ -188,7 +188,7 @@
 
 
     <div class="mt-8 text-center">
-        <a href="{{ url_for('index') }}" class="inline-flex items-center gap-2 px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg transition duration-300">
+        <a href="{{ url_for('index') }}" class="inline-flex items-center gap-2 px-6 py-2 bg-walnut hover:bg-greige text-stucco font-semibold rounded-lg transition duration-300">
             <i data-lucide="arrow-left"></i> Volver al Inicio
         </a>
     </div>

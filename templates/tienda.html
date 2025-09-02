@@ -7,7 +7,7 @@
     <!-- Filtro por categoría -->
     <form method="GET" class="max-w-md mx-auto mb-6">
         <label for="categoria" class="block mb-2 text-sm font-medium">Filtrar por categoría:</label>
-        <select id="categoria" name="categoria" class="w-full p-2 rounded-lg bg-gray-800 border border-gray-700 text-white" onchange="this.form.submit()">
+        <select id="categoria" name="categoria" class="w-full p-2 rounded-lg bg-onyx border border-gray-700 text-stucco" onchange="this.form.submit()">
             <option value="">Todas</option>
             {% for c in categorias %}
             <option value="{{ c }}" {% if categoria_seleccionada == c %}selected{% endif %}>{{ c }}</option>
@@ -17,13 +17,13 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {% for producto in productos %}
-        <div class="bg-gray-800 text-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="bg-onyx text-stucco rounded-2xl shadow-xl overflow-hidden">
             {% if producto.foto_url %}
             <button onclick="mostrarModal('{{ producto.foto_url }}')" class="w-full flex justify-center items-center bg-black bg-opacity-10">
                 <img src="{{ producto.foto_url }}" alt="{{ producto.nombre }}" class="h-52 object-contain p-2">
             </button>
             {% else %}
-            <div class="w-full h-52 bg-gray-700 flex items-center justify-center text-gray-400">Sin imagen</div>
+            <div class="w-full h-52 bg-ash flex items-center justify-center text-gray-400">Sin imagen</div>
             {% endif %}
             <div class="p-4">
                 <h2 class="text-xl font-semibold mb-2 truncate">{{ producto.nombre }}</h2>
@@ -41,7 +41,7 @@
                 <a href="https://wa.me/543804315721?text=Hola!%20Estoy%20interesado%20en%20el%20producto%20{{ producto.nombre | urlencode }}" 
                    target="_blank"
                    class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-green-600 hover:bg-green-500 transition">
-                    <i data-lucide="message-circle" class="w-5 h-5 text-white"></i>
+                    <i data-lucide="message-circle" class="w-5 h-5 text-stucco"></i>
                 </a>
             </div>
         </div>
@@ -51,7 +51,7 @@
 
 <!-- Modal para mostrar imagen -->
 <div id="modalImagen" class="fixed inset-0 bg-black bg-opacity-80 hidden justify-center items-center z-50">
-    <button onclick="cerrarModal()" class="absolute top-4 right-6 text-white text-2xl">&times;</button>
+    <button onclick="cerrarModal()" class="absolute top-4 right-6 text-stucco text-2xl">&times;</button>
     <img id="imagenModal" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl">
 </div>
 

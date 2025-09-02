@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="p-6 bg-gray-900 text-white min-h-screen">
+<div class="p-6 bg-gray-900 text-stucco min-h-screen">
     <h1 class="text-3xl font-bold text-center mb-8">Caja Diaria</h1>
 
     <!-- Selector de fechas -->
     <div class="mb-8">
         <form method="get" action="{{ url_for('caja') }}" class="flex justify-center gap-4">
-            <input type="date" name="fecha_desde" value="{{ fecha_desde }}" class="bg-gray-800 text-white p-2 rounded-lg">
-            <input type="date" name="fecha_hasta" value="{{ fecha_hasta }}" class="bg-gray-800 text-white p-2 rounded-lg">
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">Filtrar</button>
+            <input type="date" name="fecha_desde" value="{{ fecha_desde }}" class="bg-onyx text-stucco p-2 rounded-lg">
+            <input type="date" name="fecha_hasta" value="{{ fecha_hasta }}" class="bg-onyx text-stucco p-2 rounded-lg">
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-stucco px-4 py-2 rounded-lg">Filtrar</button>
         </form>
     </div>
 
@@ -46,14 +46,14 @@
     <!-- Gráfico de barras -->
     <div class="mb-8">
         <h2 class="text-2xl font-semibold mb-4">Gráfico de Ventas</h2>
-        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <div class="bg-onyx p-6 rounded-lg shadow-lg">
             <canvas id="ventasChart"></canvas>
         </div>
     </div>
 
     <!-- Botón para volver al inicio -->
     <div class="mt-8 text-center">
-        <a href="{{ url_for('index') }}" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-300">Volver al Inicio</a>
+        <a href="{{ url_for('index') }}" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-stucco rounded-lg transition duration-300">Volver al Inicio</a>
     </div>
 </div>
 
